@@ -30,6 +30,12 @@ public class FieldImpact : MonoBehaviour
 
 	void Update()
 	{
+	if (MyGameManager.GameState != GameState.NowGame)
+	{
+			return;
+	}
+
+
 		// 左奥
 		KeyEvent(KeyCode.Q, KeyCode.U, 0, new Vector3( 1.0f, 0.0f, -1.0f));
 		// 右奥
