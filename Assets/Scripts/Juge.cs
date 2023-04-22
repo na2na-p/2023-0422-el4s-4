@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum WINNER
 {
-	PYALER,
+	PYALER = 1,
 	ENEMY
 	//DRAW
 }
@@ -12,6 +12,8 @@ public enum WINNER
 public class Juge : MonoBehaviour
 {
 	[SerializeField] CountDown CountDown;
+	[SerializeField] ResultButton ResultButton;
+	bool IsOnce = false;
 
 	// Start is called before the first frame update
 	void Start()
@@ -22,9 +24,11 @@ public class Juge : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		if (IsOnce) return;
 		if (CountDown.GetIsFinish())
 		{
-			Judgement();
+			ResultButton.SetResult((int)Judgement());
+			IsOnce = true;
 		}
 	}
 

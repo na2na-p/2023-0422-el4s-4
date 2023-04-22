@@ -34,7 +34,7 @@ public class ResultButton: MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		SetResult(1);
+		//SetResult(1);
 
 
 
