@@ -16,7 +16,7 @@ public class SpaceBG : MonoBehaviour
 	{
 		Vector3 pos = this.transform.position;
 		theta += 0.002f;
-		pos.x = Mathf.Cos(theta * 0.2f)*60+450.0f;
+		pos.x = Mathf.Cos(theta * 0.2f)*60+900.0f;
 		pos.y = Mathf.Sin(theta*3f*0.2f)*80+450.0f; 
 		this.transform.position = pos;
 	}
