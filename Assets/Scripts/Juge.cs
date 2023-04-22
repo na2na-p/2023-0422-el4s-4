@@ -13,12 +13,12 @@ public class Juge : MonoBehaviour
 {
 	[SerializeField] CountDown CountDown;
 	[SerializeField] ResultButton ResultButton;
-	bool IsOnce = false;
+	public bool IsOnce { get; set; }
 
 	// Start is called before the first frame update
 	void Start()
 	{
-
+		IsOnce = false;
 	}
 
 	// Update is called once per frame
