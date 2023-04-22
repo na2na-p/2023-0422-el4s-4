@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-  public enum Type
-  {
-		Player,
-		Enemy,
-  }
+public enum Type
+{
+	Player,
+	Enemy,
+}
 
 public class FieldButton : MonoBehaviour
 {
@@ -22,7 +22,7 @@ public class FieldButton : MonoBehaviour
 		SpoawTransform = gameObject.transform.GetChild(0);
 	}
 
-  public void OnPushButtonEvent(Type type)
+	public void OnPushButtonEvent(Type type)
   {
 		Instantiate(ParticleSystemObject[(int)type], SpoawTransform);
 	}
