@@ -4,9 +4,9 @@ using UnityEngine;
 
 public enum WINNER
 {
-	PYALER_1,
-	PYALER_2,
-	DRAW
+	PYALER,
+	ENEMY
+	//DRAW
 }
 
 public class Juge : MonoBehaviour
@@ -29,25 +29,26 @@ public class Juge : MonoBehaviour
 		public float y; 
   };
 	
-	short Judgement(Float2 PlA, Float2 PlB, Float2 CenP)
+	WINNER Judgement()
 	{
+		Vector3 PlA = GameObject.FindGameObjectWithTag("Player").transform.position;
+		Vector3 PlB = GameObject.FindGameObjectWithTag("Enemy").transform.position;
+		Vector3 CenP = GameObject.FindGameObjectWithTag("Field").transform.position;
+		
 		float PlALen = (PlA.x - CenP.x) * (PlA.x - CenP.x) + (PlA.y - CenP.y) * (PlA.y - CenP.y);
 		float PlBLen = (PlB.x - CenP.x) * (PlB.x - CenP.x) + (PlB.y - CenP.y) * (PlB.y - CenP.y);
 		
 
-		GameObject.Find
+		
 		if (PlALen > PlBLen)
 		{
-			return 1;
-		}
-		else if (PlALen < PlBLen)
-		{
-			return -1;
+			return WINNER.PYALER;
 		}
 		else
 		{
-			return 0;
+			return WINNER.ENEMY;
 		}
+		//引き分け無し
 	}
 	//END of Judge
 
