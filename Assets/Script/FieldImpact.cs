@@ -5,7 +5,7 @@ using UnityEngine;
 public class FieldImpact : MonoBehaviour
 {
 	[SerializeField]
-	Transform[] FieldTransforms;
+	FieldButton[] FieldButton;
 
 	[SerializeField]
 	float DefaultImpactVolume;
@@ -14,8 +14,9 @@ public class FieldImpact : MonoBehaviour
 	Rigidbody Rigidbody;
 
 
-	// 距離を10で区切って　-10　して距離が近ければ大きくする
-	const float LIMIT_LENGTH = 10;
+	// 距離を10で区切って　- 10　して距離が近ければ大きくする
+	const float MIN_POWER = 1.0f;
+	const float MAX_LENGTH = 7.0f;
 
 	void Start()
 	{
@@ -33,10 +34,10 @@ public class FieldImpact : MonoBehaviour
 		KeyEvent(KeyCode.Q, KeyCode.U, 0, new Vector3( 1.0f, 0.0f, -1.0f));
 		// 右奥
 		KeyEvent(KeyCode.W, KeyCode.I, 1, new Vector3(-1.0f, 0.0f, -1.0f));
-		// 左手前
-		KeyEvent(KeyCode.X, KeyCode.M, 2, new Vector3(-1.0f, 0.0f,  1.0f));
 		// 右手前
-		KeyEvent(KeyCode.Z, KeyCode.N, 3, new Vector3( 1.0f, 0.0f,  1.0f));
+		KeyEvent(KeyCode.Z, KeyCode.N, 2, new Vector3( 1.0f, 0.0f,  1.0f));
+		// 左手前
+		KeyEvent(KeyCode.X, KeyCode.M, 3, new Vector3(-1.0f, 0.0f,  1.0f));
 
 
 
@@ -50,26 +51,40 @@ public class FieldImpact : MonoBehaviour
 		{
 			float lengthVolume = 0.0f;
 
-
-
 			// 入力fieldからの自分との距離
 			lengthVolume = Vector2.Distance(
 				new Vector2(transform.position.x, transform.position.z),
-				new Vector2(FieldTransforms[fieldPointIndex].position.x, FieldTransforms[fieldPointIndex].position.z)
+				new Vector2(FieldButton[fieldPointIndex].GetComponent<Transform>().position.x, FieldButton[fieldPointIndex].GetComponent<Transform>().position.z)
 				);
 
 			// 距離制限
-			lengthVolume = Mathf.Clamp(lengthVolume, 0.0f, LIMIT_LENGTH);
+			lengthVolume = Mathf.Clamp(lengthVolume, 0.0f, MAX_LENGTH);
 
 			// 距離が近ければ、値を大きくする
-			lengthVolume = Mathf.Abs(LIMIT_LENGTH - lengthVolume);
+			lengthVolume = Mathf.Abs(lengthVolume - MAX_LENGTH);
+
+			// 威力距離制限
+			lengthVolume = Mathf.Clamp(lengthVolume, MIN_POWER, MAX_LENGTH);
+
 
 			Rigidbody.AddForce(impactVector * DefaultImpactVolume * lengthVolume);
 
-			Debug.Log("キーダウン");
-			Debug.Log("impactVector" + impactVector);
+			Debug.Log("lengthVolume" + lengthVolume);
 			
 		}
+
+		if (Input.GetKeyDown(keyCode1))
+		{
+			// fieldのイベント
+			FieldButton[fieldPointIndex].OnPushButtonEvent(Type.Player);
+		}
+		if (Input.GetKeyDown(keyCode2))
+		{
+			// fieldのイベント
+			FieldButton[fieldPointIndex].OnPushButtonEvent(Type.Enemy);
+		}
+
+
 	}
 
 
