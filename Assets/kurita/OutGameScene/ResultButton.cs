@@ -34,8 +34,8 @@ public class ResultButton: MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.A))
-			SetResult(1);
+		SetResult(1);
+
 
 
 		//リザルト中
