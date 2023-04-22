@@ -2,12 +2,19 @@ name: CI
 
 on:
   pull_request:
-    types: [labeled]
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+    branches:
+      - main
+      - develop
 
 jobs:
-  dummy:
+  build:
+    name: ci
     runs-on: ubuntu-latest
-
     steps:
-      - name: dummy
-        run: cat "All tests passed!"
+      - name: CI
+        run: echo "Hello World"
