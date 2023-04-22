@@ -25,7 +25,7 @@ public class Juge : MonoBehaviour
 	void Update()
 	{
 		if (IsOnce) return;
-		if (CountDown.GetIsFinish())
+		if (MyGameManager.GameState == GameState.Finish)
 		{
 			ResultButton.SetResult((int)Judgement());
 			IsOnce = true;
@@ -44,12 +44,12 @@ public class Juge : MonoBehaviour
 		Vector3 PlB = GameObject.FindGameObjectWithTag("Enemy").transform.position;
 		Vector3 CenP = GameObject.FindGameObjectWithTag("Field").transform.position;
 
-		float PlALen = (PlA.x - CenP.x) * (PlA.x - CenP.x) + (PlA.y - CenP.y) * (PlA.y - CenP.y);
-		float PlBLen = (PlB.x - CenP.x) * (PlB.x - CenP.x) + (PlB.y - CenP.y) * (PlB.y - CenP.y);
+		float PlALen = Vector2.Distance(new Vector2(PlA.x, PlA.z), new Vector2(CenP.x, CenP.z));
+		float PlBLen = Vector2.Distance(new Vector2(PlB.x, PlB.z), new Vector2(CenP.x, CenP.z));
 
 
 
-		if (PlALen > PlBLen)
+		if (PlALen < PlBLen)
 		{
 			return WINNER.PYALER;
 		}
