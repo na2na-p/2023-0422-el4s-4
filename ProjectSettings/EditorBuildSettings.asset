@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/kurita/OutGameScene/Title.unity
+    guid: d4b03df5c266d6f448cf994aab78e167
+  - enabled: 1
+    path: Assets/kurita/OutGameScene/ResultRab.unity
+    guid: 0402104c29a09f64180ad2d5be71a658
   m_configObjects: {}
