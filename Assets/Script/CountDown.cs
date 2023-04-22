@@ -9,14 +9,12 @@ public class CountDown : MonoBehaviour
 	public static float CountDownTime;
 	public TextMeshProUGUI TextCountDown;
 	[SerializeField] float CountDownTimeMax = 60;
-	private bool IsFinish;
 	private bool IsStart;
 
 	// Start is called before the first frame update
 	void Start()
 	{
-		CountDownTime = CountDownTimeMax;
-		IsFinish = false;
+		CountDownTime = CountDownTimeMax;		
 		IsStart = false;
 
 		StartCountDown(3.0f);
@@ -25,26 +23,44 @@ public class CountDown : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-
-
 		// カウントダウンタイムを整形して表示
 		TextCountDown.text = string.Format("{0:00.00}", CountDownTime);
 
 		// 経過時刻を弾いていく
 		CountDownTime -= Time.deltaTime;
 
+		switch(MyGameManager.GameState)
+	{
+			case GameState.StartWait:
+				Debug.Log("wait");
+				break;
+			case GameState.NowGame:
+				Debug.Log("now");
+				break;
+			case GameState.Finish:
+				Debug.Log("finish");
+				break;
+		}
+		
+
 		if (CountDownTime <= 0.0F)
 		{
-			CountDownTime = 0.0F;
-			IsFinish = true;
-			// if ()
+			CountDownTime = 0.0F;			
+			if (MyGameManager.GameState == GameState.StartWait)
 			{
+				MyGameManager.GameState = GameState.NowGame;
+				StartCountDown(CountDownTimeMax);
+				return;
+			}
 
+			if (MyGameManager.GameState == GameState.NowGame)
+			{
+				MyGameManager.GameState = GameState.Finish;
+				return;
 			}
 		}
 	}
 
-	public bool GetIsFinish() { return IsFinish; }
 
 	public void StartCountDown(float time)
 	{

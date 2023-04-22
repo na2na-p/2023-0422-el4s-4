@@ -25,7 +25,7 @@ public class Juge : MonoBehaviour
 	void Update()
 	{
 		if (IsOnce) return;
-		if (CountDown.GetIsFinish())
+		if (MyGameManager.GameState == GameState.Finish)
 		{
 			ResultButton.SetResult((int)Judgement());
 			IsOnce = true;
