@@ -10,29 +10,45 @@ public class CountDown : MonoBehaviour
 	public TextMeshProUGUI TextCountDown;
 	[SerializeField] float CountDownTimeMax = 60;
 	private bool IsFinish;
+	private bool IsStart;
 
-  // Start is called before the first frame update
-  void Start()
-    {
-			CountDownTime = CountDownTimeMax;
-			IsFinish = false;
-    }
+	// Start is called before the first frame update
+	void Start()
+	{
+		CountDownTime = CountDownTimeMax;
+		IsFinish = false;
+		IsStart = false;
 
-    // Update is called once per frame
-    void Update()
-    {
-			// カウントダウンタイムを整形して表示
-			TextCountDown.text = string.Format("{0:00.00}", CountDownTime);
+		StartCountDown(3.0f);
+	}
 
-			// 経過時刻を弾いていく
-			CountDownTime -= Time.deltaTime;
+	// Update is called once per frame
+	void Update()
+	{
 
-			if(CountDownTime <= 0.0F)
+
+		// カウントダウンタイムを整形して表示
+		TextCountDown.text = string.Format("{0:00.00}", CountDownTime);
+
+		// 経過時刻を弾いていく
+		CountDownTime -= Time.deltaTime;
+
+		if (CountDownTime <= 0.0F)
+		{
+			CountDownTime = 0.0F;
+			IsFinish = true;
+			// if ()
 			{
-				CountDownTime = 0.0F;
-				IsFinish = true;
+
 			}
-    }
+		}
+	}
 
 	public bool GetIsFinish() { return IsFinish; }
+
+	public void StartCountDown(float time)
+	{
+		IsStart = true;
+		CountDownTime = time;
+	}
 }
