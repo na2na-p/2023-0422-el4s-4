@@ -34,5 +34,5 @@ public class CountDown : MonoBehaviour
 			}
     }
 
-	bool GetIsFinish() { return IsFinish; }
+	public bool GetIsFinish() { return IsFinish; }
 }
