@@ -29,20 +29,6 @@ public class CountDown : MonoBehaviour
 		// 経過時刻を弾いていく
 		CountDownTime -= Time.deltaTime;
 
-		switch(MyGameManager.GameState)
-	{
-			case GameState.StartWait:
-				Debug.Log("wait");
-				break;
-			case GameState.NowGame:
-				Debug.Log("now");
-				break;
-			case GameState.Finish:
-				Debug.Log("finish");
-				break;
-		}
-		
-
 		if (CountDownTime <= 0.0F)
 		{
 			CountDownTime = 0.0F;			
