@@ -15,4 +15,32 @@ public class Juge : MonoBehaviour
     {
         
     }
+	/*
+	struct Float2
+	{
+		public float x;
+		public float y; 
+  };
+	short Judgement(Float2 PlA, Float2 PlB, Float2 CenP)
+	{
+		float PlALen = (PlA.x - CenP.x) * (PlA.x - CenP.x) + (PlA.y - CenP.y) * (PlA.y - CenP.y);
+		float PlBLen = (PlB.x - CenP.x) * (PlB.x - CenP.x) + (PlB.y - CenP.y) * (PlB.y - CenP.y);
+		
+
+		if (PlALen > PlBLen)
+		{
+			return 1;
+		}
+		else if (PlALen < PlBLen)
+		{
+			return -1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	//END of Judge
+	*/
+
 }
