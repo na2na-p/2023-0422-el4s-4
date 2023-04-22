@@ -14,6 +14,7 @@ public class CountDown : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		MyGameManager.GameState = GameState.StartWait;
 		CountDownTime = CountDownTimeMax;		
 		IsStart = false;
 
@@ -28,20 +29,6 @@ public class CountDown : MonoBehaviour
 
 		// 経過時刻を弾いていく
 		CountDownTime -= Time.deltaTime;
-
-		switch(MyGameManager.GameState)
-	{
-			case GameState.StartWait:
-				Debug.Log("wait");
-				break;
-			case GameState.NowGame:
-				Debug.Log("now");
-				break;
-			case GameState.Finish:
-				Debug.Log("finish");
-				break;
-		}
-		
 
 		if (CountDownTime <= 0.0F)
 		{
