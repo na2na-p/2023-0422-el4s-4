@@ -44,7 +44,7 @@ public class Juge : MonoBehaviour
 		{
 			return WINNER.PYALER;
 		}
-		else (PlALen < PlBLen)
+		else
 		{
 			return WINNER.ENEMY;
 		}
