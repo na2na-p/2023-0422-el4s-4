@@ -32,11 +32,7 @@ public class Juge : MonoBehaviour
 		}
 	}
 
-	struct Float2
-	{
-		public float x;
-		public float y;
-	};
+
 
 	public WINNER Judgement()
 	{
@@ -49,7 +45,7 @@ public class Juge : MonoBehaviour
 
 
 
-		if (PlALen > PlBLen)
+		if (PlALen < PlBLen)
 		{
 			return WINNER.PYALER;
 		}
