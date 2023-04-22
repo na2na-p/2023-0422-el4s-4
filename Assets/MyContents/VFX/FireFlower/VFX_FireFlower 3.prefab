@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7185332294943007407}
   - component: {fileID: 8323706264391502014}
   - component: {fileID: 5169363517732187129}
+  - component: {fileID: 89591766}
   m_Layer: 0
   m_Name: VFX_FireFlower 3
   m_TagString: Untagged
@@ -49,9 +50,15 @@ VisualEffect:
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
-      m_Array: []
+      m_Array:
+      - m_Value: 11.35
+        m_Name: Speed
+        m_Overridden: 1
     m_Vector2f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0.25, y: 0.5}
+        m_Name: Lifetime_MinMax
+        m_Overridden: 1
     m_Vector3f:
       m_Array: []
     m_Vector4f:
@@ -110,3 +117,16 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &89591766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7845488503211352153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a148481e09fe624bbdc2ac61bafc7cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effect: {fileID: 8323706264391502014}
